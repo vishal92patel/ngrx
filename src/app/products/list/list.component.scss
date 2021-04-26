@@ -16,4 +16,13 @@
 }
 .action-btn {
     padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    .action-btn-left {
+        flex-grow: 1;
+    }
+    .action-btn-right {
+        flex-grow: 1;
+        text-align: right;
+    }
 }
