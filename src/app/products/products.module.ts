@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ListComponent } from './list/list.component';
+import { EditComponent } from './edit/edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsService } from './products.service';
 
 const routes: Routes = [
   {
@@ -10,11 +14,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProductsComponent],
+  declarations: [ProductsComponent, ListComponent, EditComponent],
   exports: [RouterModule],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    HttpClientModule,
+    RouterModule.forChild(routes),
+  ],
+  providers: [ProductsService]
 })
 export class ProductsModule { }
