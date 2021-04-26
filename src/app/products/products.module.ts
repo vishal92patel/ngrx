@@ -25,8 +25,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('products', productReducer),
-    FormsModule,
-    EffectsModule.forFeature([ProductEffects])
+    EffectsModule.forFeature([ProductEffects]),
+    FormsModule
   ],
   providers: [ProductsService]
 })

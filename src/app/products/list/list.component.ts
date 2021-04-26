@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { Store } from "@ngrx/store";
-import { getCurrentProduct, getDisplayProductCode, ProductState, State } from '../state/product.reducer';
+import { getCurrentProduct, getDisplayProductCode, getProducts, ProductState, State } from '../state/product.reducer';
 import * as ProductActions from '../state/product.actions';
 
 @Component({
@@ -12,15 +12,22 @@ import * as ProductActions from '../state/product.actions';
 })
 export class ListComponent implements OnInit {
   products: Product[];
+  products$
   displayProductCode: boolean;
   currentProduct: Product;
   constructor(private productsService: ProductsService,
     private store: Store<State>) { }
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((res) => {
+    // this.productsService.getProducts().subscribe((res) => {
+    //   this.products = res;
+    // });
+    this.products$ = this.store.select(getProducts).subscribe((res) => {
       this.products = res;
     });
+    this.store.dispatch(ProductActions.loadProducts());
+
+
     // ** Without Selector **
     // this.store.select('products').subscribe((e) => {
     //   this.displayProductCode = e.displayProductCode;
