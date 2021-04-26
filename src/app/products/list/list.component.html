@@ -1,5 +1,7 @@
-<ul>
+<ul class="product-list-wrapper">
     <li *ngFor="let product of products">
-        {{product?.productName}}
+        <div class="product-list">
+            {{product?.productName}}
+        </div>
     </li>
 </ul>
