@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { EditComponent } from './edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './products.service';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('', {})
   ],
   providers: [ProductsService]
 })

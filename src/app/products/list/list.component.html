@@ -2,6 +2,11 @@
     <li *ngFor="let product of products">
         <div class="product-list">
             {{product?.productName}}
+            <span *ngIf="displayProductCode">({{product?.productCode}})</span>
         </div>
     </li>
 </ul>
+<div class="action-btn">
+    <input type="checkbox" id="productCode" (change)="onProductDisplayCode($event)">
+    <label for="productCode">Display Product Code</label>
+</div>

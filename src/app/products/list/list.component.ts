@@ -9,11 +9,15 @@ import { ProductsService } from '../products.service';
 })
 export class ListComponent implements OnInit {
   products: Product[] = [];
+  displayProductCode: boolean = false;
   constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res) => {
       this.products = res;
     });
+  }
+  onProductDisplayCode(e: any) {
+    this.displayProductCode = e.target.checked;
   }
 }

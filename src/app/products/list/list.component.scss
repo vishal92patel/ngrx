@@ -5,6 +5,7 @@
     margin: 0;
     list-style-type: none;
     border-right: solid 1px;
+    width: 390px;
 }
 .product-list {
     padding: 5px;
@@ -12,4 +13,7 @@
     margin: 10px;
     border: solid 1px;
     text-decoration: none;
+}
+.action-btn {
+    padding-left: 10px;
 }
