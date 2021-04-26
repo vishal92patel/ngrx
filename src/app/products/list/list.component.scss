@@ -6,6 +6,11 @@
     list-style-type: none;
     border-right: solid 1px;
     width: 390px;
+    .product-list-active {
+        background: #3636b9;
+        color: white;
+        border-color: #f70606;
+    }
 }
 .product-list {
     padding: 5px;

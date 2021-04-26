@@ -1,6 +1,7 @@
 <ul class="product-list-wrapper">
     <li *ngFor="let product of products">
-        <div class="product-list" (click)="onProductClick(product)">
+        <div class="product-list" (click)="onProductClick(product)"
+        [ngClass]="{'product-list-active': product.id == currentProduct?.id}">
             {{product?.productName}}
             <span *ngIf="displayProductCode">({{product?.productCode}})</span>
         </div>

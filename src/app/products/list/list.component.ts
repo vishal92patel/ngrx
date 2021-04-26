@@ -13,6 +13,7 @@ import * as ProductActions from '../state/product.actions';
 export class ListComponent implements OnInit {
   products: Product[];
   displayProductCode: boolean;
+  currentProduct: Product;
   constructor(private productsService: ProductsService,
     private store: Store<State>) { }
 
@@ -28,6 +29,9 @@ export class ListComponent implements OnInit {
     this.store.select(getDisplayProductCode).subscribe((res) => {
       this.displayProductCode = res;
     });
+    this.store.select(getCurrentProduct).subscribe((res) => {
+      this.currentProduct = res;
+    })
   }
   onProductDisplayCode(e: any) {
     this.store.dispatch(ProductActions.toggleDisplayProductCode());
