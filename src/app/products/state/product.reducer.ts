@@ -72,5 +72,12 @@ export const productReducer = createReducer<ProductState>(
             ...state,
             products: action.products
         }
-    })
+    }),
+    // For testing purpose only created in both effects and reducer
+    // on(ProductActions.loadProducts, (state) => {
+    //     console.log(state);
+    //     return {
+    //         ...state
+    //     }
+    // })
 );

@@ -34,7 +34,6 @@ export class EditComponent implements OnInit {
   onDelete(currentProduct: Product) {
     if (currentProduct.id != 0) {
       this.productsService.deleteProduct(currentProduct.id).subscribe((res) => {
-        console.log(res);
         this.store.dispatch(ProductActions.clearCurrentProduct());
       })
     } else {
