@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { Store } from "@ngrx/store";
-import { getDisplayProductCode, ProductState, State } from '../state/product.reducer';
+import { getDisplayProductCode, State } from '../state/product.reducer';
+import * as ProductActions from '../state/product.actions';
 
 @Component({
   selector: 'app-list',
@@ -29,8 +30,6 @@ export class ListComponent implements OnInit {
     });
   }
   onProductDisplayCode(e: any) {
-    this.store.dispatch(
-      { type: "[Product] Toggle Product Code" }
-    )
+    this.store.dispatch(ProductActions.toggleDisplayProductCode());
   }
 }
