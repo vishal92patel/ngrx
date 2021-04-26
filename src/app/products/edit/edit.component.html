@@ -5,7 +5,8 @@
         <input type="text" placeholder="Product Code" [value]="currentProduct?.productCode">
     </div>
     <div class="action-btn">
-        <button>Save</button>
-        <button>Delete</button>
+        <button (click)="onSave(currentProduct);">Save</button>
+        <button (click)="onDelete(currentProduct)">Delete</button>
+        <button (click)="onCancel(currentProduct)">Cancel</button>
     </div>
 </div>

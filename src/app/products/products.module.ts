@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './products.service';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('products', productReducer)
+    StoreModule.forFeature('products', productReducer),
+    FormsModule
   ],
   providers: [ProductsService]
 })
