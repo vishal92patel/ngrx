@@ -1,8 +1,8 @@
-<div style="padding: 10px;">
+<div style="padding: 10px;" *ngIf="currentProduct">
     <div class="edit-form">
-        <input type="text" placeholder="Product Name">
-        <input type="text" placeholder="Description">
-        <input type="text" placeholder="Product Code">
+        <input type="text" placeholder="Product Name" [value]="currentProduct?.productName">
+        <input type="text" placeholder="Description" [value]="currentProduct?.description">
+        <input type="text" placeholder="Product Code" [value]="currentProduct?.productCode">
     </div>
     <div class="action-btn">
         <button>Save</button>

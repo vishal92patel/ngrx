@@ -1,6 +1,6 @@
 <ul class="product-list-wrapper">
     <li *ngFor="let product of products">
-        <div class="product-list">
+        <div class="product-list" (click)="onProductClick(product)">
             {{product?.productName}}
             <span *ngIf="displayProductCode">({{product?.productCode}})</span>
         </div>
@@ -12,6 +12,6 @@
         <label for="productCode">Display Product Code</label>
     </div>
     <div class="action-btn-right">
-        <button>Add New</button>
+        <button (click)="onAddNew();">Add New</button>
     </div>
 </div>

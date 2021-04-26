@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { Store } from "@ngrx/store";
-import { getDisplayProductCode, State } from '../state/product.reducer';
+import { getCurrentProduct, getDisplayProductCode, ProductState, State } from '../state/product.reducer';
 import * as ProductActions from '../state/product.actions';
 
 @Component({
@@ -31,5 +31,11 @@ export class ListComponent implements OnInit {
   }
   onProductDisplayCode(e: any) {
     this.store.dispatch(ProductActions.toggleDisplayProductCode());
+  }
+  onProductClick(product: Product) {
+    this.store.dispatch(ProductActions.setCurrentProduct({ product }));
+  }
+  onAddNew() {
+    this.store.dispatch(ProductActions.initializeCurrentProductCode());
   }
 }
