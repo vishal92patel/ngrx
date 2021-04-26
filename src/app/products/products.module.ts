@@ -7,6 +7,7 @@ import { EditComponent } from './edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './products.service';
 import { StoreModule } from '@ngrx/store';
+import { productReducer } from './state/product.reducer';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('', {})
+    StoreModule.forFeature('products', productReducer)
   ],
   providers: [ProductsService]
 })

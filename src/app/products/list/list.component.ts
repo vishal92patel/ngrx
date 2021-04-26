@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: 'app-list',
@@ -8,16 +9,22 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  products: Product[] = [];
-  displayProductCode: boolean = false;
-  constructor(private productsService: ProductsService) { }
+  products: Product[];
+  displayProductCode: boolean;
+  constructor(private productsService: ProductsService,
+    private store: Store<any>) { }
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((res) => {
       this.products = res;
     });
+    this.store.select('products').subscribe((e) => {
+      this.displayProductCode = e.displayProductCode;
+    })
   }
   onProductDisplayCode(e: any) {
-    this.displayProductCode = e.target.checked;
+    this.store.dispatch(
+      { type: "[Product] Toggle Product Code" }
+    )
   }
 }
