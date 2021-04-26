@@ -9,7 +9,8 @@ import { ProductsService } from './products.service';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
 import { FormsModule } from '@angular/forms';
-
+import { ProductEffects } from '../products/state/product.effects';
+import { EffectsModule } from '@ngrx/effects';
 const routes: Routes = [
   {
     path: '', component: ProductsComponent
@@ -24,7 +25,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('products', productReducer),
-    FormsModule
+    FormsModule,
+    EffectsModule.forFeature([ProductEffects])
   ],
   providers: [ProductsService]
 })
