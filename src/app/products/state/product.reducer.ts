@@ -11,13 +11,15 @@ export interface State {
 export interface ProductState {
     displayProductCode: boolean,
     currentProduct: Product,
-    products: Product[]
+    products: Product[],
+    error: any
 }
 
 const initialState: ProductState = {
     displayProductCode: true,
     currentProduct: null,
-    products: []
+    products: [],
+    error: null
 }
 
 const getProductFeatureState = createFeatureSelector<ProductState>('products');
@@ -33,6 +35,10 @@ export const getCurrentProduct = createSelector(
 export const getProducts = createSelector(
     getProductFeatureState,
     state => state.products
+);
+export const getError = createSelector(
+    getProductFeatureState,
+    state => state.error
 )
 
 
@@ -75,9 +81,14 @@ export const productReducer = createReducer<ProductState>(
     }),
     // For testing purpose only created in both effects and reducer
     // on(ProductActions.loadProducts, (state) => {
-    //     console.log(state);
     //     return {
     //         ...state
     //     }
     // })
+    on(ProductActions.loadProductsFail, (state, action): ProductState => {
+        return {
+            ...state,
+            error: action.error
+        }
+    })
 );

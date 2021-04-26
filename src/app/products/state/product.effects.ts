@@ -11,7 +11,6 @@ export class ProductEffects {
         private productsService: ProductsService) { }
 
     loadProducts = createEffect(() => {
-        console.log(this.actions);
         return this.actions.pipe(
             ofType(ProductActions.loadProducts),
             mergeMap(() => this.productsService.getProducts().pipe(
